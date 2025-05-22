@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MM ACMV Calculator | Cooling Load & AC Sizing Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-snowflake"></i> MM-<span>ACMV </span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a href="#calculator">Calculators</a>
+                    <a href="#features">Features</a>
+                    <a href="#faqs">FAQs</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="particles" id="particles"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>ACMV Calculation Tool for Myanmar Junior Engineer</h1>
+                <p>Professional-grade cooling load calculations and aircon sizing tool based on Singapore's Code of Practice (SS553). Get precise recommendations tailored to your building specifications.</p>
+                <div class="btn-cta">
+                    <a href="#calculator" class="btn btn-primary">Start Calculating</a>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>Why Use Our ACMV Calculator</h2>  
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-in floating">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Precise Calculations</h3>
+                    <p>Get accurate cooling load calculations based on Singapore's SS553 Code of Practice for optimal system design. </p>
+                </div>
+                <div class="feature-card animate-in floating" style="animation-delay: 0.2s">
+                    <div class="feature-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Building-Specific</h3>
+                    <p>Tailored calculations for different building types with consideration for local climate conditions.</p>
+                </div>
+                <div class="feature-card animate-in floating" style="animation-delay: 0.4s">
+                    <div class="feature-icon">
+                        <i class="fas fa-fan"></i>
+                    </div>
+                    <h3>AC System Selection</h3>
+                    <p>Get recommendations for the right type and size of air conditioning system based on your requirements.</p>
+                </div>
+                <div class="feature-card animate-in floating" style="animation-delay: 0.6s">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Energy Efficiency</h3>
+                    <p>Optimize your cooling system for maximum energy efficiency and cost savings.</p>
+                </div>
+                <div class="feature-card animate-in floating" style="animation-delay: 0.8s">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Brand Recommendations</h3>
+                    <p>Get suggestions for reliable ACMV brands and models suitable for your specific project needs.</p>
+                </div>
+                <div class="feature-card animate-in floating" style="animation-delay: 1s">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Results</h3>
+                    <p>Get instant calculations and recommendations to speed up your decision-making process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="calculator-section" id="calculator">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>ACMV Calculation Tools</h2>
+            </div>
+            <div class="calculator-tabs">
+                <button class="tab-btn active" data-tab="cooling-load">Cooling Load Calculation</button>
+                <button class="tab-btn" data-tab="aircon-sizing">Aircon Size Calculation</button>
+            </div>
+            <div class="calculator-form">
+                <div class="loading" id="calculatorLoading">
+                    <div class="spinner"></div>
+                </div>
+                
+                <!-- Cooling Load Calculator -->
+                <div class="form-step active" id="cooling-load-form">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary-dark);">Cooling Load Calculator</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="building-type">Building Type</label>
+                            <select class="form-control" id="building-type">
+                                <option value="residential">Residential</option>
+                                <option value="office">Office</option>
+                                <option value="retail">Retail</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="hospital">Hospital</option>
+                                <option value="industrial">Industrial</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="floor-area">Floor Area (m²)</label>
+                            <input type="number" class="form-control" id="floor-area" placeholder="Enter floor area">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ceiling-height">Ceiling Height (m)</label>
+                            <input type="number" step="0.1" class="form-control" id="ceiling-height" placeholder="Enter ceiling height">
+                        </div>
+                        <div class="form-group">
+                            <label for="num-occupants">Number of Occupants</label>
+                            <input type="number" class="form-control" id="num-occupants" placeholder="Enter number of people">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="window-area">Window Area (m²)</label>
+                            <input type="number" step="0.1" class="form-control" id="window-area" placeholder="Enter window area">
+                        </div>
+                        <div class="form-group">
+                            <label for="window-type">Window Type</label>
+                            <select class="form-control" id="window-type">
+                                <option value="single">Single Glazed</option>
+                                <option value="double">Double Glazed</option>
+                                <option value="low-e">Low-E Glass</option>
+                                <option value="tinted">Tinted Glass</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="wall-type">External Wall Type</label>
+                            <select class="form-control" id="wall-type">
+                                <option value="concrete">Concrete</option>
+                                <option value="brick">Brick</option>
+                                <option value="lightweight">Lightweight Concrete</option>
+                                <option value="insulated">Insulated Wall</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="orientation">Main Facade Orientation</label>
+                            <select class="form-control" id="orientation">
+                                <option value="north">North</option>
+                                <option value="south">South</option>
+                                <option value="east">East</option>
+                                <option value="west">West</option>
+                                <option value="northeast">North-East</option>
+                                <option value="northwest">North-West</option>
+                                <option value="southeast">South-East</option>
+                                <option value="southwest">South-West</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="equipment-load">Equipment Heat Load (W)</label>
+                            <input type="number" class="form-control" id="equipment-load" placeholder="Enter equipment heat load">
+                        </div>
+                        <div class="form-group">
+                            <label for="lighting-density">Lighting Density (W/m²)</label>
+                            <select class="form-control" id="lighting-density">
+                                <option value="10">Low (< 10 W/m²)</option>
+                                <option value="15">Medium (10-15 W/m²)</option>
+                                <option value="20">High (> 15 W/m²)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="calculate-cooling-load" style="width: 100%; margin-top: 1rem;">Calculate Cooling Load</button>
+                    
+                    <div class="calculator-result" id="cooling-load-result">
+                        <h3>Calculation Results</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <h4>Sensible Cooling Load</h4>
+                                <p id="sensible-load">0 kW</p>
+                            </div>
+                            <div class="result-item">
+                                <h4>Latent Cooling Load</h4>
+                                <p id="latent-load">0 kW</p>
+                            </div>
+                            <div class="result-item">
+                                <h4>Total Cooling Load</h4>
+                                <p id="total-load">0 kW</p>
+                            </div>
+                            <div class="result-item">
+                                <h4>Required Capacity</h4>
+                                <p id="required-capacity">0 RT</p>
+                            </div>
+                        </div>
+                        
+                        <div class="recommendations">
+                            <h4>Recommended System Type</h4>
+                            <p id="system-recommendation">Based on your inputs, we recommend the following system types:</p>
+                            <div class="brand-recommendations" id="brand-recommendations">
+                                <!-- Brands will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Aircon Size Calculator -->
+                <div class="form-step" id="aircon-sizing-form">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary-dark);">Aircon Size Calculator</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="room-type">Room Type</label>
+                            <select class="form-control" id="room-type">
+                                <option value="bedroom">Bedroom</option>
+                                <option value="living">Living Room</option>
+                                <option value="dining">Dining Room</option>
+                                <option value="study">Study Room</option>
+                                <option value="kitchen">Kitchen</option>
+                                <option value="office-room">Office Room</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="room-area">Room Area (m²)</label>
+                            <input type="number" class="form-control" id="room-area" placeholder="Enter room area">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="room-height">Room Height (m)</label>
+                            <input type="number" step="0.1" class="form-control" id="room-height" placeholder="Enter room height">
+                        </div>
+                        <div class="form-group">
+                            <label for="window-size">Window Size (m²)</label>
+                            <input type="number" step="0.1" class="form-control" id="window-size" placeholder="Enter window size">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sun-exposure">Sun Exposure</label>
+                            <select class="form-control" id="sun-exposure">
+                                <option value="low">Low (Shaded most of the day)</option>
+                                <option value="medium">Medium (Partial sun exposure)</option>
+                                <option value="high">High (Direct sunlight most of the day)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="insulation">Insulation Quality</label>
+                            <select class="form-control" id="insulation">
+                                <option value="poor">Poor</option>
+                                <option value="average">Average</option>
+                                <option value="good">Good</option>
+                                <option value="excellent">Excellent</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="occupants">Average Number of Occupants</label>
+                            <input type="number" class="form-control" id="occupants" placeholder="Enter number of occupants">
+                        </div>
+                        <div class="form-group">
+                            <label for="appliances">Electronic Appliances Load</label>
+                            <select class="form-control" id="appliances">
+                                <option value="low">Low (Few appliances)</option>
+                                <option value="medium">Medium (TV, Computer, etc.)</option>
+                                <option value="high">High (Multiple devices, servers, etc.)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="calculate-aircon-size" style="width: 100%; margin-top: 1rem;">Calculate Aircon Size</button>
+                    
+                    <div class="calculator-result" id="aircon-size-result">
+                        <h3>Calculation Results</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <h4>Required BTU/h</h4>
+                                <p id="required-btu">0 BTU/h</p>
+                            </div>
+                            <div class="result-item">
+                                <h4>Required kW</h4>
+                                <p id="required-kw">0 kW</p>
+                            </div>
+                            <div class="result-item">
+                                <h4>Ideal Aircon Size</h4>
+                                <p id="ideal-size">0 HP</p>
+                            </div>
+                            <div class="result-item">
+                                <h4>Coverage Area</h4>
+                                <p id="coverage-area">0 m²</p>
+                            </div>
+                        </div>
+                        
+                        <div class="recommendations">
+                            <h4>Recommended Aircon Type</h4>
+                            <p id="aircon-recommendation">Based on your inputs, we recommend the following aircon types:</p>
+                            <div class="brand-recommendations" id="aircon-brand-recommendations">
+                                <!-- Brands will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>What Our Users Say</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card animate-in">
+                    <div class="testimonial-text">
+                        As an HVAC contractor in Singapore, I depend on this calculator for quick and accurate cooling load estimations. It's specifically designed for our climate and follows local standards perfectly.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JT</div>
+                        <div class="testimonial-info">
+                            <h4>Jason Tan</h4>
+                            <p>HVAC Contractor</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-in">
+                    <div class="testimonial-text">
+                        The brand recommendations are extremely helpful. Saved me hours of research when selecting a new system for our office building renovation project.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SL</div>
+                        <div class="testimonial-info">
+                            <h4>Sarah Lim</h4>
+                            <p>Facility Manager</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-in">
+                    <div class="testimonial-text">
+                        As an architectural firm, we use this calculator during the early design phase to properly size ACMV systems. The Singapore Code of Practice compliance makes it invaluable.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RK</div>
+                        <div class="testimonial-info">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Architect</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faqs">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item animate-in">
+                    <div class="accordion-header">
+                        What is ACMV and why is it important?
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p>ACMV stands for Air-Conditioning and Mechanical Ventilation. It's crucial for maintaining optimal indoor temperature, humidity, and air quality in Singapore's hot and humid climate. Proper ACMV system design ensures comfort, energy efficiency, and compliance with building regulations.</p>
+                    </div>
+                </div>
+                <div class="accordion-item animate-in">
+                    <div class="accordion-header">
+                        How accurate are the calculations provided by this tool?
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Our calculations are based on Singapore's SS553 Code of Practice for Air-Conditioning and Mechanical Ventilation in Buildings. They provide a reliable estimation suitable for preliminary design and planning. For final design, we always recommend consulting with a professional ACMV engineer to account for specific building characteristics and requirements.</p>
+                    </div>
+                </div>
+                <div class="accordion-item animate-in">
+                    <div class="accordion-header">
+                        What factors affect cooling load calculations?
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Several factors influence cooling load calculations including: building orientation, building envelope (walls, roof, windows), occupancy, lighting and equipment heat generation, ventilation requirements, and local climate conditions. Our calculator takes all these factors into account based on Singapore's specific climate conditions.</p>
+                    </div>
+                </div>
+                <div class="accordion-item animate-in">
+                    <div class="accordion-header">
+                        What's the difference between BTU, kW, HP, and RT?
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p>These are different units for measuring cooling capacity:
+                        <br>- BTU/h (British Thermal Unit per hour): Common unit for air conditioners
+                        <br>- kW (Kilowatt): Standard metric unit (1 kW = 3,412 BTU/h)
+                        <br>- HP (Horsepower): Often used for residential units (1 HP ≈ 9,000 BTU/h)
+                        <br>- RT (Refrigeration Ton): Used for larger systems (1 RT = 12,000 BTU/h)
+                        <br>Our calculator provides results in multiple units for your convenience.</p>
+                    </div>
+                </div>
+                <div class="accordion-item animate-in">
+                    <div class="accordion-header">
+                        How often should I recalculate my cooling requirements?
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p>It's advisable to recalculate cooling requirements when significant changes occur, such as building renovations, changes in occupancy, addition of heat-generating equipment, or when experiencing consistent cooling issues. For commercial buildings, periodic reviews every 3-5 years are recommended to ensure optimal system performance and energy efficiency.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>MM ACMV Calculator</h3>
+                    <p style="margin-bottom: 1rem;">Professional ACMV calculation tools based on Singapore's Code of Practice for accurate cooling load and aircon sizing.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Home</a></li>
+                        <li><a href="#calculator"><i class="fas fa-angle-right"></i> Calculators</a></li>
+                        <li><a href="#features"><i class="fas fa-angle-right"></i> Features</a></li>
+                        <li><a href="#faqs"><i class="fas fa-angle-right"></i> FAQs</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> ACMV Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Singapore SS553</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> BCA Green Mark</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Energy Efficiency Guide</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Blog & Articles</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Glossary of Terms</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column" id="contact">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Yangon</a></li>
+                        <li><a href="mailto:info@sgacmv.com"><i class="fas fa-envelope"></i> mymyanmarland@gmail.com</a></li>
+                        <li><a href="tel:+6587654321"><i class="fas fa-phone-alt"></i> +959787555569</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 MM ACMV Calculator. All Rights Reserved.</p>
+                <p class="developer-credit">Designed by <a href="#" target="_blank">Kyaw Myo Naing</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
